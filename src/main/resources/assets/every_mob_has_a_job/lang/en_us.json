@@ -20,5 +20,8 @@
   "message.every_mob_has_a_job.therapy.session_started": "The Creeper is having a calm therapy moment.",
   "message.every_mob_has_a_job.business.busy": "This Villager is busy and cannot attend a private meeting.",
   "message.every_mob_has_a_job.business.invited": "Private business meeting scheduled. The Villager has been marked for the meeting.",
-  "message.every_mob_has_a_job.business.meeting_started": "Confidential meeting started. Villagers assigned: %1$s"
+  "message.every_mob_has_a_job.business.meeting_started": "Confidential meeting started. Villagers assigned: %1$s",
+  "message.every_mob_has_a_job.sheep_fashion.no_wool": "The fashion designer needs to be an adult sheep with its fleece grown back.",
+  "message.every_mob_has_a_job.sheep_fashion.not_enough": "The wool costs %1$s emerald(s).",
+  "message.every_mob_has_a_job.sheep_fashion.success": "Bought %2$s wool for %1$s emerald(s). The sheep will regrow its fleece by grazing."
 }
