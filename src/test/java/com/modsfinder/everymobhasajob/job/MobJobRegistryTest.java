@@ -20,6 +20,14 @@ class MobJobRegistryTest {
     }
 
     @Test
+    void tenthActiveMobIsTheSheepFashionDesigner() {
+        MobJob sheep = MobJobRegistry.resolve("minecraft:sheep");
+        assertEquals("wool_fashion_designer", sheep.id());
+        assertEquals("Wool Fashion Designer", sheep.title());
+        assertFalse(sheep.bossRole());
+    }
+
+    @Test
     void everyCuratedDefinitionHasCompleteMetadata() {
         assertFalse(MobJobRegistry.entries().isEmpty());
         for (Map.Entry<String, MobJob> entry : MobJobRegistry.entries().entrySet()) {
@@ -54,6 +62,7 @@ class MobJobRegistryTest {
         assertTrue(MobJobRegistry.resolve("minecraft:warden").bossRole());
         assertTrue(MobJobRegistry.resolve("minecraft:elder_guardian").bossRole());
         assertFalse(MobJobRegistry.resolve("minecraft:cow").bossRole());
+        assertFalse(MobJobRegistry.resolve("minecraft:sheep").bossRole());
     }
 
     @Test
