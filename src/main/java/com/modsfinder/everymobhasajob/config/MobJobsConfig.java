@@ -32,6 +32,9 @@ public final class MobJobsConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_ENDERMAN_PIZZA = BUILDER
             .comment("Allow Endermen to accept paid pizza orders and teleport to deliver them.")
             .define("enableEndermanPizza", true);
+    public static final ModConfigSpec.BooleanValue ENABLE_PILLAGER_CONSTRUCTION = BUILDER
+            .comment("Allow Pillagers to place supplied stone bricks at safe construction spots.")
+            .define("enablePillagerConstruction", true);
 
     public static final ModConfigSpec.IntValue ENDERMAN_PIZZA_EMERALD_PRICE = BUILDER
             .comment("Emeralds charged for one Enderman pizza delivery.")

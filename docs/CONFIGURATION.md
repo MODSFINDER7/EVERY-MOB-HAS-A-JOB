@@ -13,6 +13,7 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 | enableHorseTaxi | true | true/false | Enable paid boarding on taxi horses |
 | enableIronGolemPolice | true | true/false | Enable golem police-response state and alert particles |
 | enableEndermanPizza | true | true/false | Enable Enderman pizza delivery |
+| enablePillagerConstruction | true | true/false | Enable Pillager block placement |
 | endermanPizzaEmeraldPrice | 1 | 1–64 | Fare for one Enderman pizza delivery |
 | horseTaxiFareEmeralds | 1 | 1–64 | Fare for boarding a taxi horse |
 | pigShopEmeraldPrice | 1 | 1–64 | Emeralds required for one pig-shop purchase |
@@ -25,6 +26,8 @@ The server configuration is authoritative. The cow role respects the vanilla mob
 
 Use a regular book on any mob to inspect its assigned job, personality and current activity. The book is not consumed.
 
-Enderman pizza delivery is an initial gameplay implementation: hold emeralds and right-click an Enderman. It validates a safe nearby position, teleports the Enderman beside the player and drops a pumpkin pie named Nether Pizza. The fare is configurable. A dedicated pizza item, restaurant block, queue and multi-stop courier route are not implemented yet.
+Enderman pizza delivery currently teleports an Enderman to a safe spot near the player and drops a pumpkin pie named Nether Pizza for a configurable emerald fare. The dedicated restaurant, custom pizza item and long-distance courier routes are still planned.
+
+Pillager construction is an early building interaction: hold stone bricks and right-click a Pillager. It places one stone-brick block directly in front of the Pillager if the space is clear, supported and permitted by the server's spawn-protection interaction check. The block is charged only after successful placement.
 
 The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation are not implemented yet. Iron Golem police activity reflects vanilla target changes and does not replace its existing combat AI.
