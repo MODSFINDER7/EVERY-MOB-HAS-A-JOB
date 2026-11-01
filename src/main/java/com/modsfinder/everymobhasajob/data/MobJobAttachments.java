@@ -1,8 +1,10 @@
 package com.modsfinder.everymobhasajob.data;
 
 import java.util.function.Supplier;
+
 import com.mojang.serialization.Codec;
 import com.modsfinder.everymobhasajob.EveryMobHasAJob;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -14,13 +16,17 @@ public final class MobJobAttachments {
 
     public static final Supplier<AttachmentType<String>> JOB_ID = ATTACHMENTS.register(
             "job_id", () -> AttachmentType.builder(() -> "town_resident")
-                    .serialize(Codec.STRING.fieldOf("value")).build());
+                    .serialize(Codec.STRING.fieldOf("value"))
+                    .sync(ByteBufCodecs.STRING_UTF8)
+                    .build());
 
     public static final Supplier<AttachmentType<String>> ACTIVITY = ATTACHMENTS.register(
             "activity", () -> AttachmentType.builder(() -> "idle")
-                    .serialize(Codec.STRING.fieldOf("value")).build());
+                    .serialize(Codec.STRING.fieldOf("value"))
+                    .sync(ByteBufCodecs.STRING_UTF8)
+                    .build());
 
-    // Transient marker: the goal is installed again when an entity is loaded.
+    // Runtime-only marker: the cow goal is installed again when the entity joins a level.
     public static final Supplier<AttachmentType<Boolean>> COW_GOAL_INSTALLED = ATTACHMENTS.register(
             "cow_goal_installed", () -> AttachmentType.builder(() -> false).build());
 
