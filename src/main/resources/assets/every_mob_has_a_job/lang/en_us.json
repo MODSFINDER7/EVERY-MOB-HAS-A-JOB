@@ -16,5 +16,7 @@
   "message.every_mob_has_a_job.construction.failed": "The construction block could not be placed.",
   "message.every_mob_has_a_job.construction.success": "The Pillager placed one stone-brick construction block.",
   "message.every_mob_has_a_job.therapy.too_busy": "This Creeper is not ready for a therapy session.",
-  "message.every_mob_has_a_job.therapy.session_started": "The Creeper is having a calm therapy moment."
+  "message.every_mob_has_a_job.therapy.session_started": "The Creeper is having a calm therapy moment.",
+  "message.every_mob_has_a_job.business.busy": "This Villager is busy and cannot attend a private meeting.",
+  "message.every_mob_has_a_job.business.invited": "Private business meeting scheduled. The Villager has been marked for the meeting."
 }
