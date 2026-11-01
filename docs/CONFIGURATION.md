@@ -16,18 +16,36 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 | enablePillagerConstruction | true | true/false | Enable Pillager block placement |
 | enableCreeperTherapy | true | true/false | Enable the peaceful Creeper therapy interaction |
 | enableVillagerBusiness | true | true/false | Enable paper-based Villager business invitations |
+| enableSheepFashion | true | true/false | Enable the Sheep wool-fashion shop |
 | endermanPizzaEmeraldPrice | 1 | 1–64 | Fare for one Enderman pizza delivery |
 | horseTaxiFareEmeralds | 1 | 1–64 | Fare for boarding a taxi horse |
 | pigShopEmeraldPrice | 1 | 1–64 | Emeralds required for one pig-shop purchase |
 | pigShopPorkchopsPerTrade | 2 | 1–64 | Cooked porkchops given per pig-shop purchase |
+| sheepFashionEmeraldPrice | 1 | 1–64 | Emeralds required for one sheep-wool purchase |
 | cowGrazeWorkTicks | 40 | 20–200 | Time spent grazing before the block changes |
 | cowGrazeCooldownSeconds | 18 | 1–600 | Delay between successful actions per cow |
 | camelFireCooldownSeconds | 8 | 1–120 | Delay before a camel searches for another fire |
 
-Use a regular book on any mob to inspect its job, personality and current activity. To start the Creeper's therapy-session interaction, use a poppy on a Creeper that is not targeting anything, not already swelling and not ignited. The poppy is consumed and heart particles are shown. This is a visual/activity interaction only: the Creeper's vanilla fuse, targeting and explosion mechanics are not modified.
+Use a regular book on any mob to inspect its job, personality and current activity.
 
-Enderman pizza delivery currently teleports an Enderman to a safe spot near the player and drops a pumpkin pie named Nether Pizza for a configurable emerald fare. The dedicated restaurant, custom pizza item and long-distance courier routes remain planned.
+## Sheep fashion shop
 
-Pillager construction is an early building interaction: hold stone bricks and right-click a Pillager. It places one stone-brick block directly in front of the Pillager if the space is clear, supported and permitted by the server's spawn-protection interaction check. The block is charged only after successful placement.
+Hold emeralds and right-click an adult sheep whose fleece has grown back. The sheep sells one wool block matching its current fleece colour for the configured price, then becomes sheared. Vanilla grazing regrows its fleece. A sheared or baby sheep cannot complete a sale. Creative players do not pay.
+
+## Creeper therapy
+
+To start the Creeper's therapy-session interaction, use a poppy on a Creeper that is not targeting anything, not already swelling and not ignited. The poppy is consumed and heart particles are shown. This is a visual/activity interaction only: the Creeper's vanilla fuse, targeting and explosion mechanics are not modified.
+
+## Enderman pizza delivery
+
+Enderman pizza delivery currently teleports an Enderman to a safe spot near the player and drops the custom Nether Pizza item for a configurable emerald fare. The dedicated restaurant, preparation routine and long-distance courier routes remain planned.
+
+## Pillager construction
+
+Hold stone bricks and right-click a non-aggressive Pillager. It places one stone-brick block directly in front of the Pillager if the space is clear, supported and permitted by the server's interaction check. The block is charged only after successful placement.
+
+## Horse taxi
 
 The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation remain planned.
+
+The current custom gameplay scope is the nine locked reference-video mobs plus Sheep. Other mobs receive occupation identities but do not yet have custom behaviour in this milestone.
