@@ -1,6 +1,8 @@
 package com.modsfinder.everymobhasajob.job;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 class MobJobRegistryTest {
@@ -18,22 +20,46 @@ class MobJobRegistryTest {
     }
 
     @Test
+    void everyCuratedDefinitionHasCompleteMetadata() {
+        assertFalse(MobJobRegistry.entries().isEmpty());
+        for (Map.Entry<String, MobJob> entry : MobJobRegistry.entries().entrySet()) {
+            assertTrue(entry.getKey().startsWith("minecraft:"), entry.getKey());
+            MobJob job = entry.getValue();
+            assertNotNull(job.id(), entry.getKey());
+            assertFalse(job.id().isBlank(), entry.getKey());
+            assertFalse(job.title().isBlank(), entry.getKey());
+            assertFalse(job.personality().isBlank(), entry.getKey());
+            assertFalse(job.activity().isBlank(), entry.getKey());
+            assertFalse(job.animationSet().isBlank(), entry.getKey());
+        }
+    }
+
+    @Test
     void unlistedMobTypesReceiveStableSpeciesSpecificJobs() {
         MobJob first = MobJobRegistry.resolve("minecraft:future_mob");
         MobJob second = MobJobRegistry.resolve("minecraft:future_mob");
         MobJob another = MobJobRegistry.resolve("minecraft:other_mob");
-        assertEquals(first, second);
+
+        assertSame(first, second);
         assertEquals("resident_future_mob", first.id());
         assertEquals("Future Mob Specialist", first.title());
         assertNotEquals(first.id(), another.id());
+        assertFalse(first.bossRole());
     }
 
     @Test
-    void bossEntriesAreFlagged() {
+    void bossEntriesAreFlaggedWithoutChangingCivilianAssignments() {
         assertTrue(MobJobRegistry.resolve("minecraft:ender_dragon").bossRole());
         assertTrue(MobJobRegistry.resolve("minecraft:wither").bossRole());
         assertTrue(MobJobRegistry.resolve("minecraft:warden").bossRole());
         assertTrue(MobJobRegistry.resolve("minecraft:elder_guardian").bossRole());
+        assertFalse(MobJobRegistry.resolve("minecraft:cow").bossRole());
+    }
+
+    @Test
+    void registryViewCannotBeMutatedByCallers() {
+        assertThrows(UnsupportedOperationException.class,
+                () -> MobJobRegistry.entries().clear());
     }
 
     @Test
