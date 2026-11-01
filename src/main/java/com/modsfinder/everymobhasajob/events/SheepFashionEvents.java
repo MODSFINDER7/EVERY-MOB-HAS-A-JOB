@@ -49,25 +49,26 @@ public final class SheepFashionEvents {
 
         Identifier woolId = Identifier.fromNamespaceAndPath(
                 "minecraft", sheep.getColor().getName() + "_wool");
-        var woolItem = BuiltInRegistries.ITEM.get(woolId);
-        if (woolItem == Items.AIR) {
+        var woolHolder = BuiltInRegistries.ITEM.get(woolId);
+        if (woolHolder.isEmpty()) {
             EveryMobHasAJob.LOGGER.warn("No wool item registered for sheep colour {}", sheep.getColor());
             return;
         }
 
+        var wool = woolHolder.get();
         if (!player.getAbilities().instabuild) {
             payment.shrink(price);
         }
 
         sheep.setSheared(true);
         sheep.setData(MobJobAttachments.ACTIVITY, "designing_wool");
-        ItemStack product = new ItemStack(woolItem);
+        ItemStack product = new ItemStack(wool);
         if (!player.getInventory().add(product)) {
             player.drop(product, false);
         }
 
         player.sendOverlayMessage(Component.translatable(
                 "message.every_mob_has_a_job.sheep_fashion.success", price,
-                Component.translatable(woolItem.getDescriptionId())));
+                Component.translatable(wool.value().getDescriptionId())));
     }
 }
