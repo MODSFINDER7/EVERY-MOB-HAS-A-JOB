@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "default_job": {
+    "id": "town_resident",
+    "title": "Town Resident",
+    "personality": "Quiet, curious and individual",
+    "activity": "Follows a simple local routine",
+    "animations": ["idle", "look", "walk", "interact"]
+  },
+  "locked_video_jobs": {
+    "minecraft:cow": "grass_cutter",
+    "minecraft:pig": "butcher_shopkeeper",
+    "minecraft:iron_golem": "police_officer",
+    "minecraft:enderman": "pizza_chef",
+    "minecraft:camel": "firefighter",
+    "minecraft:villager": "business_network",
+    "minecraft:pillager": "construction_worker",
+    "minecraft:creeper": "therapy_patient",
+    "minecraft:horse": "taxi_driver"
+  },
+  "coverage_policy": {
+    "all_vanilla_mob_entity_types": true,
+    "unknown_or_future_entity_types": "default_job",
+    "bosses": "preserve_vanilla_identity_and_combat",
+    "variants": "share_species_job_unless_dedicated_entry_exists"
+  }
+}

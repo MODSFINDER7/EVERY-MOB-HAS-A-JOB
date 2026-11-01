@@ -1,35 +1,19 @@
-# Locked Reference-Video Roles
+# Locked video roles
 
-These nine roles are fixed project requirements. Their core job concepts and defining impressions must not be replaced.
+Source concept: https://youtu.be/hqYlYNrbxNk?si=f-vMtiA7c4fzsZ9O
 
-Reference video: https://youtu.be/hqYlYNrbxNk
+These nine assignments are fixed requirements:
 
-| Mob | Locked role | Required concept |
+| Mob | Job | Required behaviour |
 |---|---|---|
-| Cow | Grass cutter | Moves around trimming grass as its work |
-| Pig | Butcher / shopkeeper | Runs a meat shop and serves customers |
-| Iron Golem | Police officer | Patrols, investigates theft, catches suspects, and performs an arrest interaction |
-| Enderman | Pizza chef / delivery person | Prepares pizzas, works in a restaurant, and teleports to deliver orders |
-| Camel | Firefighter | Responds to fires and performs firefighting actions |
-| Villagers | Secret business organisation | Manage businesses, restricted offices, guards, and hidden facilities |
-| Pillagers | Construction workers | Work at construction sites and handle building materials |
-| Creeper | Therapy patient | Attends therapy and has funny reactions around personal space |
+| Cow | Grass cutter | Grazes/cuts grass in patches and moves between patches |
+| Pig | Butcher/shopkeeper | Runs a stall and sells meat |
+| Iron Golem | Police officer | Patrols and responds to theft/intrusion events |
+| Enderman | Pizza chef/delivery | Prepares pizza and teleports to deliver it |
+| Camel | Firefighter | Responds to fire incidents |
+| Villagers | Secret business organisation | Restricted offices, guards and hidden facilities |
+| Pillagers | Construction workers | Work at marked construction sites |
+| Creeper | Therapy patient | Therapy routine; vanilla fuse/explosion remains intact |
 | Horse | Taxi driver | Offers paid rides to player-selected destinations |
 
-## Animation direction
-
-- Cow: grass-cutting movement, pauses to inspect the work, satisfied idle.
-- Pig: counter interaction, customer service, payment and item hand-off.
-- Iron Golem: patrol, investigate, confront and escort states.
-- Enderman: food preparation, oven interaction, carrying a pizza box and delivery teleport.
-- Camel: emergency response, equipment handling and extinguishing presentation.
-- Villagers: desk work, meetings, guard patrols and secret-facility transitions.
-- Pillagers: carry materials, hammer, build and take breaks.
-- Creeper: therapy seating, listening and expressive reactions.
-- Horse: taxi waiting, passenger acceptance, travel and ride completion.
-
-Animations should use suitable model-part movement and clear state transitions. Whole-entity rotation alone does not count as a finished animation.
-
-## Fidelity rule
-
-The supplied transcript is the reference for the nine jobs. Implementation details may be adapted to Minecraft mechanics, but the job identity and recognisable humour must remain.
+Animation names in the registry are placeholders for a future animation controller, not proof that animations are implemented.
