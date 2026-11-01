@@ -23,11 +23,12 @@ public final class PigButcherShopEvents {
                 || !MobJobsConfig.ENABLE_PIG_BUTCHER_SHOP.get()) return;
         if (!event.getItemStack().is(Items.EMERALD)) return;
 
-        event.setCancellationResult(InteractionResult.SUCCESS);
-        event.setCanceled(true);
-
+        // Let the client send the interaction packet; the authoritative server handles the trade.
         if (event.getLevel().isClientSide()) return;
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+
+        event.setCancellationResult(InteractionResult.SUCCESS);
+        event.setCanceled(true);
 
         ItemStack payment = event.getItemStack();
         int price = MobJobsConfig.PIG_SHOP_EMERALD_PRICE.get();
