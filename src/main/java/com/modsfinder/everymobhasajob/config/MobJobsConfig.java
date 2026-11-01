@@ -25,6 +25,14 @@ public final class MobJobsConfig {
             .comment("Allow adult camels to search for and extinguish nearby fire blocks.")
             .define("enableCamelFirefighter", true);
 
+    public static final ModConfigSpec.BooleanValue ENABLE_HORSE_TAXI = BUILDER
+            .comment("Allow tamed, saddled horses to offer a paid taxi boarding service.")
+            .define("enableHorseTaxi", true);
+
+    public static final ModConfigSpec.IntValue HORSE_TAXI_FARE_EMERALDS = BUILDER
+            .comment("Emeralds charged when boarding a taxi horse.")
+            .defineInRange("horseTaxiFareEmeralds", 1, 1, 64);
+
     public static final ModConfigSpec.IntValue PIG_SHOP_EMERALD_PRICE = BUILDER
             .comment("Emeralds charged for one pig butcher shop purchase.")
             .defineInRange("pigShopEmeraldPrice", 1, 1, 64);
