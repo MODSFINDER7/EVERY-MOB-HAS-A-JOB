@@ -10,6 +10,7 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 | enablePigButcherShop | true | true/false | Enable emerald-for-meat pig trades |
 | enableCamelFirefighter | true | true/false | Enable camel fire response |
 | enableHorseTaxi | true | true/false | Enable paid boarding on taxi horses |
+| enableIronGolemPolice | true | true/false | Enable golem police-response state and alert particles |
 | horseTaxiFareEmeralds | 1 | 1–64 | Fare for boarding a taxi horse |
 | pigShopEmeraldPrice | 1 | 1–64 | Emeralds required for one pig-shop purchase |
 | pigShopPorkchopsPerTrade | 2 | 1–64 | Cooked porkchops given per pig-shop purchase |
@@ -19,4 +20,4 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 
 The server configuration is authoritative. The cow role respects the vanilla mob_griefing gamerule. Camel firefighters only remove ordinary fire and soul-fire blocks, not lava or other heat sources. Creative players do not pay emeralds at either shop. If the pig-shop buyer's inventory is full, purchased meat is dropped nearby.
 
-The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation are not implemented yet.
+The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation are not implemented yet. Iron Golem police activity reflects vanilla target changes and does not replace its existing combat AI.

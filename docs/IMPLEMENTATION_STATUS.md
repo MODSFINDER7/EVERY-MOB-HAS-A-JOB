@@ -3,7 +3,7 @@
 ## Implemented
 
 - NeoForge 26.2 / Java 25 Gradle wrapper and GitHub Actions build/test workflow.
-- Server-side config for job assignment, custom AI, cow grazing, pig shop, camel firefighting and horse taxi.
+- Server-side config for job assignment, custom AI, cow grazing, pig shop, camel firefighting, horse taxi and iron-golem police response.
 - Persistent job ID and activity entity attachments; both sync to tracking clients.
 - Server-side occupation assignment for every joining entity that is a Minecraft Mob.
 - Curated jobs for the nine locked video roles and many other vanilla species.
@@ -11,13 +11,14 @@
 - Cow grass-cutter AI: adult cows graze the block beneath them, changing grass to dirt after a configurable interval. It respects mob_griefing and has a cooldown.
 - Pig butcher shop: right-click a pig while holding emeralds to buy configured cooked porkchops. Payment is checked and consumed server-side; Creative players do not pay.
 - Camel firefighter AI: searches a small nearby area on a bounded interval, approaches ordinary fire or soul fire, and extinguishes it. It respects mob_griefing and a configurable cooldown.
-- Horse taxi paid boarding: right-click a tamed, saddled, empty horse while holding emeralds to pay the configured fare and mount it. Payment is verified before it is consumed.
+- Horse taxi paid boarding: right-click a tamed, saddled, empty horse while holding emeralds to pay the configured fare and mount it.
+- Iron-golem police response: vanilla target changes update the synced job activity to patrolling, investigating_intruder or responding_to_threat; targeting a player also creates a brief alert-particle cue. Vanilla target selection and combat are not replaced.
 
 ## Still in development
 
-Cow, pig, camel and horse are the first four occupations with gameplay effects. The horse's named destination selection and autonomous route navigation are unfinished. Other assigned occupations still need their AI goals, workplaces, custom interactions and role-specific animations.
+Cow, pig, camel and horse have gameplay interactions/AI, while the iron golem has a synced police-response state and visual alert cue. Horse destination selection and autonomous route navigation remain unfinished. Other assigned occupations still need their AI goals, workplaces, custom interactions and role-specific animations.
 
-Job ID and activity data sync to tracking clients, but custom animated model layers are not implemented yet. The exact Java 26.2 live entity-registry audit, dedicated-server test and two-client multiplayer play test also remain pending.
+Custom animated model layers are not implemented yet. The exact Java 26.2 live entity-registry audit, dedicated-server test and two-client multiplayer play test also remain pending.
 
 ## Coverage
 
