@@ -8,6 +8,9 @@ public final class MobJobsConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_JOB_ASSIGNMENTS = BUILDER
             .comment("Assign occupation data to mobs when they join a server level.")
             .define("enableJobAssignments", true);
+    public static final ModConfigSpec.BooleanValue ENABLE_JOB_INSPECTION = BUILDER
+            .comment("Allow players to inspect a mob's occupation by using a book on it.")
+            .define("enableJobInspection", true);
     public static final ModConfigSpec.BooleanValue ENABLE_CUSTOM_AI = BUILDER
             .comment("Allow custom occupation AI goals to run.")
             .define("enableCustomAI", true);

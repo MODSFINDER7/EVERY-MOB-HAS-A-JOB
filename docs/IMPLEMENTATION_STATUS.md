@@ -3,11 +3,12 @@
 ## Implemented
 
 - NeoForge 26.2 / Java 25 Gradle wrapper and GitHub Actions build/test workflow.
-- Server-side config for job assignment, custom AI, cow grazing, pig shop, camel firefighting, horse taxi and iron-golem police response.
+- Server-side config for job assignment, job inspection, custom AI, cow grazing, pig shop, camel firefighting, horse taxi and iron-golem police response.
 - Persistent job ID and activity entity attachments; both sync to tracking clients.
 - Server-side occupation assignment for every joining entity that is a Minecraft Mob.
 - Curated jobs for the nine locked video roles and many other vanilla species.
 - Stable generated species-specific fallback occupations for unlisted and future mob entity types.
+- Universal job inspection: use a book on a mob to display its occupation, personality and current activity; the book is not consumed.
 - Cow grass-cutter AI: adult cows graze the block beneath them, changing grass to dirt after a configurable interval. It respects mob_griefing and has a cooldown.
 - Pig butcher shop: right-click a pig while holding emeralds to buy configured cooked porkchops. Payment is checked and consumed server-side; Creative players do not pay.
 - Camel firefighter AI: searches a small nearby area on a bounded interval, approaches ordinary fire or soul fire, and extinguishes it. It respects mob_griefing and a configurable cooldown.

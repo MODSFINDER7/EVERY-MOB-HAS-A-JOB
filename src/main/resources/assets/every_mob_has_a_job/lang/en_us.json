@@ -5,5 +5,6 @@
   "message.every_mob_has_a_job.taxi.not_ready": "Taxi service requires a tamed, saddled horse with no passenger.",
   "message.every_mob_has_a_job.taxi.not_enough": "The taxi fare is %1$s emerald(s).",
   "message.every_mob_has_a_job.taxi.boarding_failed": "The taxi could not start your ride.",
-  "message.every_mob_has_a_job.taxi.boarded": "Taxi fare paid (%1$s emerald(s)). You can now steer to your destination."
+  "message.every_mob_has_a_job.taxi.boarded": "Taxi fare paid (%1$s emerald(s)). You can now steer to your destination.",
+  "message.every_mob_has_a_job.inspect": "%1$s | Job: %2$s | Personality: %3$s | Activity: %4$s"
 }

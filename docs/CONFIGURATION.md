@@ -5,6 +5,7 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 | Option | Default | Range | Purpose |
 |---|---:|---:|---|
 | enableJobAssignments | true | true/false | Assign jobs to joining mobs |
+| enableJobInspection | true | true/false | Inspect jobs by right-clicking a mob while holding a book |
 | enableCustomAI | true | true/false | Enable occupation AI goals |
 | enableCowGrassCutter | true | true/false | Enable cow grass cutting |
 | enablePigButcherShop | true | true/false | Enable emerald-for-meat pig trades |
@@ -20,4 +21,4 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 
 The server configuration is authoritative. The cow role respects the vanilla mob_griefing gamerule. Camel firefighters only remove ordinary fire and soul-fire blocks, not lava or other heat sources. Creative players do not pay emeralds at either shop. If the pig-shop buyer's inventory is full, purchased meat is dropped nearby.
 
-The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation are not implemented yet. Iron Golem police activity reflects vanilla target changes and does not replace its existing combat AI.
+Use a regular book on any mob to inspect its assigned job, personality and current activity. The book is not consumed. The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation are not implemented yet.

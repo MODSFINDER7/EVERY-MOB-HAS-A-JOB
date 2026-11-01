@@ -27,15 +27,16 @@ Use JDK 25.
 ## Current implementation
 
 - Every joining entity that is a Minecraft Mob receives a curated or generated species-specific job assignment on the logical server.
+- Use a book on any mob to inspect its job, personality and activity.
 - Cow grass-cutter: adult cows periodically graze the block beneath them, changing grass to dirt after the configured work interval.
 - Pig butcher shop: right-click a pig with emeralds to buy cooked porkchops. The price and output are configurable.
 - Camel firefighter: camels scan a small nearby area for fire, walk toward it and extinguish it.
 - Horse taxi: pay an emerald fare to board a tamed, saddled horse. The rider steers the ride; destination selection and autonomous routing remain in progress.
+- Iron golem police: synced response states and alert particles when vanilla targeting selects a player or threat.
 - Job ID and current activity are persisted and synchronised to tracking clients.
-- Server owners can toggle job assignment and the first job behaviours.
 
 ## Still in development
 
-The cow, pig, camel and horse are the first four jobs with gameplay behaviour. Other occupations, workplaces, richer economy, custom model animations and client animation layers remain in progress. The live registry audit and in-game multiplayer tests are pending.
+The cow, pig, camel and horse are the first four jobs with direct gameplay interactions/AI. Iron golem police response and universal job inspection are also implemented. Other occupations, workplaces, richer economy, custom model animations and client animation layers remain in progress. The live registry audit and in-game multiplayer tests are pending.
 
 See docs/IMPLEMENTATION_STATUS.md, docs/CONFIGURATION.md and docs/ROLE_CATALOG.md.
