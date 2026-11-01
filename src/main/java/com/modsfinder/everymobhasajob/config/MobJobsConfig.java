@@ -29,7 +29,13 @@ public final class MobJobsConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_IRON_GOLEM_POLICE = BUILDER
             .comment("Show police response activity when an iron golem selects a target.")
             .define("enableIronGolemPolice", true);
+    public static final ModConfigSpec.BooleanValue ENABLE_ENDERMAN_PIZZA = BUILDER
+            .comment("Allow Endermen to accept paid pizza orders and teleport to deliver them.")
+            .define("enableEndermanPizza", true);
 
+    public static final ModConfigSpec.IntValue ENDERMAN_PIZZA_EMERALD_PRICE = BUILDER
+            .comment("Emeralds charged for one Enderman pizza delivery.")
+            .defineInRange("endermanPizzaEmeraldPrice", 1, 1, 64);
     public static final ModConfigSpec.IntValue HORSE_TAXI_FARE_EMERALDS = BUILDER
             .comment("Emeralds charged when boarding a taxi horse.")
             .defineInRange("horseTaxiFareEmeralds", 1, 1, 64);

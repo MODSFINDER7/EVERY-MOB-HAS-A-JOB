@@ -12,6 +12,8 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 | enableCamelFirefighter | true | true/false | Enable camel fire response |
 | enableHorseTaxi | true | true/false | Enable paid boarding on taxi horses |
 | enableIronGolemPolice | true | true/false | Enable golem police-response state and alert particles |
+| enableEndermanPizza | true | true/false | Enable Enderman pizza delivery |
+| endermanPizzaEmeraldPrice | 1 | 1–64 | Fare for one Enderman pizza delivery |
 | horseTaxiFareEmeralds | 1 | 1–64 | Fare for boarding a taxi horse |
 | pigShopEmeraldPrice | 1 | 1–64 | Emeralds required for one pig-shop purchase |
 | pigShopPorkchopsPerTrade | 2 | 1–64 | Cooked porkchops given per pig-shop purchase |
@@ -21,4 +23,8 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 
 The server configuration is authoritative. The cow role respects the vanilla mob_griefing gamerule. Camel firefighters only remove ordinary fire and soul-fire blocks, not lava or other heat sources. Creative players do not pay emeralds at either shop. If the pig-shop buyer's inventory is full, purchased meat is dropped nearby.
 
-Use a regular book on any mob to inspect its assigned job, personality and current activity. The book is not consumed. The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation are not implemented yet.
+Use a regular book on any mob to inspect its assigned job, personality and current activity. The book is not consumed.
+
+Enderman pizza delivery is an initial gameplay implementation: hold emeralds and right-click an Enderman. It validates a safe nearby position, teleports the Enderman beside the player and drops a pumpkin pie named Nether Pizza. The fare is configurable. A dedicated pizza item, restaurant block, queue and multi-stop courier route are not implemented yet.
+
+The horse taxi is an initial paid-boarding service: the horse must already be tamed and saddled, and the rider steers it after paying. Named destination booking and autonomous route navigation are not implemented yet. Iron Golem police activity reflects vanilla target changes and does not replace its existing combat AI.

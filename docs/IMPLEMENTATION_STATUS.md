@@ -3,7 +3,7 @@
 ## Implemented
 
 - NeoForge 26.2 / Java 25 Gradle wrapper and GitHub Actions build/test workflow.
-- Server-side config for job assignment, job inspection, custom AI, cow grazing, pig shop, camel firefighting, horse taxi and iron-golem police response.
+- Server-side config for job assignment, job inspection, custom AI, cow grazing, pig shop, camel firefighting, horse taxi, iron-golem police response and Enderman pizza delivery.
 - Persistent job ID and activity entity attachments; both sync to tracking clients.
 - Server-side occupation assignment for every joining entity that is a Minecraft Mob.
 - Curated jobs for the nine locked video roles and many other vanilla species.
@@ -13,11 +13,12 @@
 - Pig butcher shop: right-click a pig while holding emeralds to buy configured cooked porkchops. Payment is checked and consumed server-side; Creative players do not pay.
 - Camel firefighter AI: searches a small nearby area on a bounded interval, approaches ordinary fire or soul fire, and extinguishes it. It respects mob_griefing and a configurable cooldown.
 - Horse taxi paid boarding: right-click a tamed, saddled, empty horse while holding emeralds to pay the configured fare and mount it.
-- Iron-golem police response: vanilla target changes update the synced job activity to patrolling, investigating_intruder or responding_to_threat; targeting a player also creates a brief alert-particle cue. Vanilla target selection and combat are not replaced.
+- Iron-golem police response: vanilla target changes update the synced job activity and show an alert cue without replacing vanilla combat.
+- Enderman pizza courier: right-click an Enderman while holding emeralds. The server checks for a safe nearby delivery spot, teleports the Enderman beside the player and drops a pumpkin pie named Nether Pizza. The fare is configurable.
 
 ## Still in development
 
-Cow, pig, camel and horse have gameplay interactions/AI, while the iron golem has a synced police-response state and visual alert cue. Horse destination selection and autonomous route navigation remain unfinished. Other assigned occupations still need their AI goals, workplaces, custom interactions and role-specific animations.
+The cow, pig, camel, horse and Enderman currently have direct gameplay interactions/AI. The iron golem has a synced police-response state and visual cue. The Enderman's restaurant kitchen, order queue, custom pizza item and longer delivery routes remain unfinished; the horse's named destination selection and autonomous route navigation remain unfinished. Other assigned occupations still need their AI goals, workplaces, custom interactions and role-specific animations.
 
 Custom animated model layers are not implemented yet. The exact Java 26.2 live entity-registry audit, dedicated-server test and two-client multiplayer play test also remain pending.
 
