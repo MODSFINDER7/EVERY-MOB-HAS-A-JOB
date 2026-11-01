@@ -3,10 +3,11 @@ package com.modsfinder.everymobhasajob.goal;
 import java.util.EnumSet;
 import com.modsfinder.everymobhasajob.data.MobJobAttachments;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.cow.Cow;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.gamerules.GameRules;
 
 public final class CowGrassCutterGoal extends Goal {
     private static final int WORK_TICKS = 40;
@@ -29,7 +30,8 @@ public final class CowGrassCutterGoal extends Goal {
             return false;
         }
         if (!cow.isAlive() || cow.isBaby() || cow.isPassenger() || !cow.onGround()) return false;
-        if (!cow.level().getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) return false;
+        if (!(cow.level() instanceof ServerLevel serverLevel)
+                || !serverLevel.getGameRules().get(GameRules.MOB_GRIEFING)) return false;
 
         BlockPos below = cow.blockPosition().below();
         if (!cow.level().getBlockState(below).is(Blocks.GRASS_BLOCK)) return false;
