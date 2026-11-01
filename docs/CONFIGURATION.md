@@ -15,6 +15,7 @@ The mod registers a server-side config file named every_mob_has_a_job-server.tom
 | enableEndermanPizza | true | true/false | Enable Enderman pizza delivery |
 | enablePillagerConstruction | true | true/false | Enable Pillager block placement |
 | enableCreeperTherapy | true | true/false | Enable the peaceful Creeper therapy interaction |
+| enableVillagerBusiness | true | true/false | Enable paper-based Villager business invitations |
 | endermanPizzaEmeraldPrice | 1 | 1–64 | Fare for one Enderman pizza delivery |
 | horseTaxiFareEmeralds | 1 | 1–64 | Fare for boarding a taxi horse |
 | pigShopEmeraldPrice | 1 | 1–64 | Emeralds required for one pig-shop purchase |
