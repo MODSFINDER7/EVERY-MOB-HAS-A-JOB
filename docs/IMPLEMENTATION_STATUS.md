@@ -17,6 +17,7 @@
 - Enderman pizza courier: right-click an Enderman while holding emeralds. The server checks for a safe nearby delivery spot, teleports the Enderman beside the player and drops a pumpkin pie named Nether Pizza. The fare is configurable.
 - Pillager construction worker: right-click a non-aggressive Pillager with stone bricks. It places one stone-brick block in a clear, supported space directly ahead, subject to the server's interaction permission check. Payment is consumed only after placement succeeds.
 - Creeper therapy interaction: use a poppy on an unignited Creeper that is not swelling and has no target. It consumes the poppy, sets the synced activity to therapy_session and shows heart particles. The vanilla fuse/explosion logic is unchanged.
+- Villager business invitation: use paper on a Villager to schedule a private business meeting and sync its activity marker; no vanilla trade data is modified.
 
 ## Still in development
 
