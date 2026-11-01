@@ -26,9 +26,12 @@ public final class MobJobAttachments {
                     .sync(ByteBufCodecs.STRING_UTF8)
                     .build());
 
-    // Runtime-only marker: the cow goal is installed again when the entity joins a level.
+    // Runtime-only markers: goals are installed when an entity joins a server level.
     public static final Supplier<AttachmentType<Boolean>> COW_GOAL_INSTALLED = ATTACHMENTS.register(
             "cow_goal_installed", () -> AttachmentType.builder(() -> false).build());
+
+    public static final Supplier<AttachmentType<Boolean>> CAMEL_GOAL_INSTALLED = ATTACHMENTS.register(
+            "camel_goal_installed", () -> AttachmentType.builder(() -> false).build());
 
     private MobJobAttachments() {}
 

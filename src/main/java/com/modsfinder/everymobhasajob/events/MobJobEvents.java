@@ -3,11 +3,13 @@ package com.modsfinder.everymobhasajob.events;
 import com.modsfinder.everymobhasajob.EveryMobHasAJob;
 import com.modsfinder.everymobhasajob.config.MobJobsConfig;
 import com.modsfinder.everymobhasajob.data.MobJobAttachments;
+import com.modsfinder.everymobhasajob.goal.CamelFirefighterGoal;
 import com.modsfinder.everymobhasajob.goal.CowGrassCutterGoal;
 import com.modsfinder.everymobhasajob.job.MobJob;
 import com.modsfinder.everymobhasajob.job.MobJobRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.cow.Cow;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -34,12 +36,18 @@ public final class MobJobEvents {
             mob.setData(MobJobAttachments.ACTIVITY, "idle");
         }
 
-        if (mob instanceof Cow cow
-                && MobJobsConfig.ENABLE_CUSTOM_AI.get()
-                && MobJobsConfig.ENABLE_COW_GRASS_CUTTER.get()
+        if (!MobJobsConfig.ENABLE_CUSTOM_AI.get()) return;
+
+        if (mob instanceof Cow cow && MobJobsConfig.ENABLE_COW_GRASS_CUTTER.get()
                 && !cow.getData(MobJobAttachments.COW_GOAL_INSTALLED)) {
             cow.getGoalSelector().addGoal(6, new CowGrassCutterGoal(cow));
             cow.setData(MobJobAttachments.COW_GOAL_INSTALLED, true);
+        }
+
+        if (mob instanceof Camel camel && MobJobsConfig.ENABLE_CAMEL_FIREFIGHTER.get()
+                && !camel.getData(MobJobAttachments.CAMEL_GOAL_INSTALLED)) {
+            camel.getGoalSelector().addGoal(7, new CamelFirefighterGoal(camel));
+            camel.setData(MobJobAttachments.CAMEL_GOAL_INSTALLED, true);
         }
     }
 }

@@ -21,6 +21,10 @@ public final class MobJobsConfig {
             .comment("Allow pigs with the butcher occupation to sell cooked porkchops for emeralds.")
             .define("enablePigButcherShop", true);
 
+    public static final ModConfigSpec.BooleanValue ENABLE_CAMEL_FIREFIGHTER = BUILDER
+            .comment("Allow adult camels to search for and extinguish nearby fire blocks.")
+            .define("enableCamelFirefighter", true);
+
     public static final ModConfigSpec.IntValue PIG_SHOP_EMERALD_PRICE = BUILDER
             .comment("Emeralds charged for one pig butcher shop purchase.")
             .defineInRange("pigShopEmeraldPrice", 1, 1, 64);
@@ -36,6 +40,10 @@ public final class MobJobsConfig {
     public static final ModConfigSpec.IntValue COW_GRAZE_COOLDOWN_SECONDS = BUILDER
             .comment("Seconds between successful grass-cutter actions for the same cow.")
             .defineInRange("cowGrazeCooldownSeconds", 18, 1, 600);
+
+    public static final ModConfigSpec.IntValue CAMEL_FIRE_COOLDOWN_SECONDS = BUILDER
+            .comment("Seconds before a camel searches for another fire after responding.")
+            .defineInRange("camelFireCooldownSeconds", 8, 1, 120);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
