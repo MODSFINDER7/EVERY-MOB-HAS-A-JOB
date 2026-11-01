@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.modsfinder.everymobhasajob.config.MobJobsConfig;
 import com.modsfinder.everymobhasajob.data.MobJobAttachments;
+import com.modsfinder.everymobhasajob.item.ModItems;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -17,6 +18,7 @@ public final class EveryMobHasAJob {
 
     public EveryMobHasAJob(IEventBus modEventBus, ModContainer modContainer) {
         MobJobAttachments.register(modEventBus);
+        ModItems.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.SERVER, MobJobsConfig.SPEC);
         LOGGER.info("Every Mob Has a Job 0.2.0 initialised.");
     }

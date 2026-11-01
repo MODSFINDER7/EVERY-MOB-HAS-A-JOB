@@ -3,9 +3,9 @@ package com.modsfinder.everymobhasajob.events;
 import com.modsfinder.everymobhasajob.EveryMobHasAJob;
 import com.modsfinder.everymobhasajob.config.MobJobsConfig;
 import com.modsfinder.everymobhasajob.data.MobJobAttachments;
+import com.modsfinder.everymobhasajob.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -77,12 +77,10 @@ public final class EndermanPizzaEvents {
             return;
         }
 
-        // The Enderman's vanilla teleport-to-position method handles the actual move.
         enderman.teleportTo(targetX, targetY, targetZ);
         enderman.setData(MobJobAttachments.ACTIVITY, "delivering_pizza");
 
-        ItemStack pizza = new ItemStack(Items.PUMPKIN_PIE);
-        pizza.set(DataComponents.CUSTOM_NAME, Component.literal("Nether Pizza"));
+        ItemStack pizza = new ItemStack(ModItems.NETHER_PIZZA.get());
         enderman.spawnAtLocation(serverLevel, pizza);
 
         if (!player.getAbilities().instabuild) {
