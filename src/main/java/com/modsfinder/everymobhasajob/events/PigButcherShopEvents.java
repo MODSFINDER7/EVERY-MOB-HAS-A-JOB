@@ -5,7 +5,7 @@ import com.modsfinder.everymobhasajob.config.MobJobsConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.animal.pig.Pig;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,14 +29,14 @@ public final class PigButcherShopEvents {
 
         if (event.getLevel().isClientSide()) return;
 
-        Player player = event.getEntity();
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
         ItemStack payment = event.getItemStack();
         int price = MobJobsConfig.PIG_SHOP_EMERALD_PRICE.get();
         int amount = MobJobsConfig.PIG_SHOP_PORKCHOPS_PER_TRADE.get();
 
         if (!player.getAbilities().instabuild) {
             if (payment.getCount() < price) {
-                player.displayClientMessage(
+                player.sendOverlayMessage(
                         Component.translatable("message.every_mob_has_a_job.pig_shop.not_enough", price), true);
                 return;
             }
