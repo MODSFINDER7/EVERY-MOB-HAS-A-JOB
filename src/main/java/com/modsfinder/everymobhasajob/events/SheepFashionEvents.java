@@ -5,7 +5,7 @@ import com.modsfinder.everymobhasajob.config.MobJobsConfig;
 import com.modsfinder.everymobhasajob.data.MobJobAttachments;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.animal.sheep.Sheep;
@@ -47,8 +47,8 @@ public final class SheepFashionEvents {
             return;
         }
 
-        ResourceLocation woolId = ResourceLocation.withDefaultNamespace(
-                sheep.getColor().getName() + "_wool");
+        Identifier woolId = Identifier.fromNamespaceAndPath(
+                "minecraft", sheep.getColor().getName() + "_wool");
         var woolItem = BuiltInRegistries.ITEM.get(woolId);
         if (woolItem == Items.AIR) {
             EveryMobHasAJob.LOGGER.warn("No wool item registered for sheep colour {}", sheep.getColor());
