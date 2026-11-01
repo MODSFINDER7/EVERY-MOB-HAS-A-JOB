@@ -41,6 +41,9 @@ public final class MobJobsConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_VILLAGER_BUSINESS = BUILDER
             .comment("Allow Villagers to accept secret-business meeting invitations.")
             .define("enableVillagerBusiness", true);
+    public static final ModConfigSpec.BooleanValue ENABLE_SHEEP_FASHION = BUILDER
+            .comment("Allow adult, unsheared sheep to sell one matching wool block for emeralds.")
+            .define("enableSheepFashion", true);
 
     public static final ModConfigSpec.IntValue ENDERMAN_PIZZA_EMERALD_PRICE = BUILDER
             .comment("Emeralds charged for one Enderman pizza delivery.")
@@ -54,6 +57,9 @@ public final class MobJobsConfig {
     public static final ModConfigSpec.IntValue PIG_SHOP_PORKCHOPS_PER_TRADE = BUILDER
             .comment("Cooked porkchops given for one pig butcher shop purchase.")
             .defineInRange("pigShopPorkchopsPerTrade", 2, 1, 64);
+    public static final ModConfigSpec.IntValue SHEEP_FASHION_EMERALD_PRICE = BUILDER
+            .comment("Emeralds charged for one wool purchase from the sheep fashion designer.")
+            .defineInRange("sheepFashionEmeraldPrice", 1, 1, 64);
     public static final ModConfigSpec.IntValue COW_GRAZE_WORK_TICKS = BUILDER
             .comment("Number of ticks a cow spends grazing before the grass block is cut.")
             .defineInRange("cowGrazeWorkTicks", 40, 20, 200);
