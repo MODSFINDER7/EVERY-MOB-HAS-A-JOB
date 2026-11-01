@@ -6,6 +6,18 @@
     "unknown_future_types": "automatically receive a generated occupation",
     "non_mob_entities": "excluded"
   },
+  "active_custom_behavior_scope": [
+    "minecraft:cow",
+    "minecraft:pig",
+    "minecraft:iron_golem",
+    "minecraft:enderman",
+    "minecraft:camel",
+    "minecraft:villager",
+    "minecraft:pillager",
+    "minecraft:creeper",
+    "minecraft:horse",
+    "minecraft:sheep"
+  ],
   "locked_video_jobs": {
     "minecraft:cow": "grass_cutter",
     "minecraft:pig": "butcher_shopkeeper",
@@ -17,6 +29,9 @@
     "minecraft:creeper": "therapy_patient",
     "minecraft:horse": "taxi_driver"
   },
+  "tenth_job": {
+    "minecraft:sheep": "wool_fashion_designer"
+  },
   "boss_roles": {
     "minecraft:ender_dragon": "end_realm_custodian",
     "minecraft:wither": "catastrophe_class_entity",
@@ -26,8 +41,9 @@
   "implementation": {
     "job_assignment": "implemented",
     "cow_grass_cutter_goal": "implemented",
-    "other_custom_behaviours": "planned",
+    "sheep_wool_fashion_shop": "implemented",
+    "other_custom_behaviours": "in_development",
     "custom_model_animations": "planned",
-    "network_activity_sync": "planned"
+    "network_activity_sync": "implemented"
   }
 }
