@@ -1,6 +1,8 @@
 package com.modsfinder.everymobhasajob.goal;
 
 import java.util.EnumSet;
+
+import com.modsfinder.everymobhasajob.config.MobJobsConfig;
 import com.modsfinder.everymobhasajob.data.MobJobAttachments;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -10,12 +12,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gamerules.GameRules;
 
 public final class CowGrassCutterGoal extends Goal {
-    private static final int WORK_TICKS = 40;
-    private static final int COOLDOWN_TICKS = 20 * 18;
-
     private final Cow cow;
     private BlockPos grassPosition;
     private int workTicks;
+    private int workDuration;
     private int cooldownTicks;
 
     public CowGrassCutterGoal(Cow cow) {
@@ -25,6 +25,8 @@ public final class CowGrassCutterGoal extends Goal {
 
     @Override
     public boolean canUse() {
+        if (!MobJobsConfig.ENABLE_CUSTOM_AI.get()
+                || !MobJobsConfig.ENABLE_COW_GRASS_CUTTER.get()) return false;
         if (cooldownTicks > 0) {
             cooldownTicks--;
             return false;
@@ -41,14 +43,17 @@ public final class CowGrassCutterGoal extends Goal {
 
     @Override
     public boolean canContinueToUse() {
-        return grassPosition != null && workTicks < WORK_TICKS
+        return grassPosition != null && workTicks < workDuration
                 && cow.isAlive() && cow.onGround()
-                && cow.blockPosition().below().equals(grassPosition);
+                && cow.blockPosition().below().equals(grassPosition)
+                && MobJobsConfig.ENABLE_CUSTOM_AI.get()
+                && MobJobsConfig.ENABLE_COW_GRASS_CUTTER.get();
     }
 
     @Override
     public void start() {
         workTicks = 0;
+        workDuration = MobJobsConfig.COW_GRAZE_WORK_TICKS.get();
         cow.getNavigation().stop();
         cow.setData(MobJobAttachments.ACTIVITY, "grazing");
     }
@@ -56,10 +61,10 @@ public final class CowGrassCutterGoal extends Goal {
     @Override
     public void tick() {
         workTicks++;
-        if (workTicks >= WORK_TICKS && grassPosition != null
+        if (workTicks >= workDuration && grassPosition != null
                 && cow.level().getBlockState(grassPosition).is(Blocks.GRASS_BLOCK)) {
             cow.level().setBlock(grassPosition, Blocks.DIRT.defaultBlockState(), 3);
-            cooldownTicks = COOLDOWN_TICKS;
+            cooldownTicks = MobJobsConfig.COW_GRAZE_COOLDOWN_SECONDS.get() * 20;
         }
     }
 
@@ -71,6 +76,7 @@ public final class CowGrassCutterGoal extends Goal {
         }
         grassPosition = null;
         workTicks = 0;
+        workDuration = 0;
     }
 
     @Override
