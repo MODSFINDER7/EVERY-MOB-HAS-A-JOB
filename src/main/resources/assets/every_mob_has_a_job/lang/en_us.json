@@ -1,3 +1,5 @@
 {
-  "modmenu.nameTranslation.every_mob_has_a_job": "Every Mob Has a Job"
+  "modmenu.nameTranslation.every_mob_has_a_job": "Every Mob Has a Job",
+  "message.every_mob_has_a_job.pig_shop.not_enough": "The butcher needs %1$s emerald(s) for this order.",
+  "message.every_mob_has_a_job.pig_shop.success": "Purchased %1$s cooked porkchops for %2$s emerald(s)."
 }

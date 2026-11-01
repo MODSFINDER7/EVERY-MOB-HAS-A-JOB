@@ -1,43 +1,44 @@
 # Implementation status
 
-## Added in this source batch
+## Implemented
 
-- NeoForge 26.2 / Java 25 MDK-aligned Gradle setup.
-- Gradle wrapper scripts, wrapper JAR and wrapper properties.
-- GitHub Actions build workflow.
-- Persistent entity attachments for job ID and current activity.
-- Server-side entity-join assignment for every entity that is a Minecraft `Mob`.
-- Curated occupations for the nine locked video roles and a broad set of other vanilla mobs.
-- Generated, species-named fallback occupation for any vanilla or future mob type not in the curated catalogue.
-- First real job AI prototype: adult cows periodically graze the grass block beneath them, respecting the `mobGriefing` gamerule.
-- Unit tests for locked roles, fallback uniqueness, boss policy and activity state.
+- NeoForge 26.2 / Java 25 MDK-aligned Gradle setup and official wrapper.
+- GitHub Actions build-and-test workflow.
+- Server-side config for job assignment, custom AI, cow grazing and pig shop pricing.
+- Persistent entity attachments for job ID and activity.
+- Server-side assignment for every joining entity that is a Minecraft `Mob`.
+- Curated jobs for the nine locked video roles and additional vanilla species.
+- Stable generated fallback occupations for unlisted and future mob entity types.
+- Cow grass-cutter AI: adult cows graze the block beneath them, changing grass to dirt after the configured interval. It respects `mob_griefing` and has a cooldown.
+- Pig butcher shop: right-click a pig while holding emeralds to buy the configured number of cooked porkchops. The server checks and consumes payment; Creative players do not pay; full inventories cause the product to drop nearby.
+- Unit tests for locked assignments, fallback generation and activity state.
 
-## Not yet a finished playable release
+## Still in development
 
-Only the cow grass-cutter role currently changes in-game behaviour. Other mob occupations are assigned and catalogued, but their workstations, navigation goals, economy/trade interactions, job-specific AI and dedicated model animations are not finished.
+The cow and pig are the first two job behaviours with actual gameplay effects. Other assigned occupations still need their AI goals, workplaces, custom interactions and role-specific animations.
 
-Job IDs and activity state are persisted on the server. Client-side animation replication has not yet been implemented, so current attachment state is not presented as a finished multiplayer animation system.
+Client-side activity animation synchronisation is not implemented yet. The exact Java 26.2 live entity-registry audit, dedicated-server test and two-client multiplayer test also remain pending.
 
-## Coverage guarantee
+## Coverage
 
-Runtime assignment checks every joining entity with `instanceof Mob` and resolves its registered entity-type ID. Every unlisted mob receives a stable species-specific fallback. Non-mob entities such as projectiles, dropped items, vehicles, display entities and experience orbs are excluded.
+When an entity enters a level on the logical server, the event handler checks whether it is a Minecraft `Mob`. The registry resolves curated job definitions or generates a stable species-specific fallback. Non-mob entities are excluded.
 
-The exact live 26.2 roster still requires an in-game registry audit on a clean client and dedicated server. That audit has not yet been run.
+This covers mob types as they join the world, including future types. It does not mean that every species has its own custom work AI yet.
 
-## Server authority and performance
+## Multiplayer and performance
 
-- Job assignment and the cow goal are installed only on the logical server.
-- The cow goal checks only its current support block; it does not perform a world-wide or chunk-wide scan.
-- The cow goal honours `mobGriefing` and uses a per-cow cooldown.
-- No custom AI decisions run from render callbacks.
+- Job assignment and gameplay interactions execute on the logical server.
+- The cow goal checks only the block directly beneath the cow.
+- No global entity scans or renderer-driven AI.
+- Cow work duration and cooldown are configurable.
+- Pig purchases verify payment and mutate inventory on the server.
 
-## Acceptance gates
+## Remaining acceptance gates
 
-- `./gradlew build` succeeds on Java 25.
+- `./gradlew build test` succeeds on Java 25.
 - Dedicated server starts with the mod.
-- Two clients observe consistent job/activity state.
+- Two clients observe consistent gameplay and activity.
 - Job data survives world reload.
-- All vanilla mob entity types resolve to valid jobs.
+- Live registry audit lists every 26.2 mob and its assignment.
 - Bosses retain vanilla phase and combat logic.
-- Disabling the feature restores vanilla behaviour.
-- Every custom occupation has an in-game behaviour test.
+- Each remaining custom occupation has its own behaviour and animation test.

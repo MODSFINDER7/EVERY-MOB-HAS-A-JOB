@@ -27,11 +27,13 @@ Use JDK 25.
 ## Current implementation
 
 - Every joining entity that is a Minecraft `Mob` receives a curated or generated species-specific job assignment on the logical server.
-- The cow grass-cutter role has an actual AI goal. It changes a grass block to dirt after a grazing interval, respects the vanilla `mob_griefing` rule, and has a per-cow cooldown.
-- Server owners can configure job assignment, custom AI and cow grazing in the server config.
-- Unit tests cover the locked role IDs, generated fallback IDs and activity state.
+- Cow grass-cutter: adult cows periodically graze the block beneath them, changing grass to dirt after the configured work interval. The role respects `mob_griefing` and has a configurable per-cow cooldown.
+- Pig butcher shop: right-click a pig while holding emeralds to buy cooked porkchops. Price and output are configurable; Creative players do not pay.
+- Server owners can toggle job assignment, custom AI, cow grazing and the pig shop.
+- Unit tests cover locked role IDs, generated fallback IDs and activity state.
 
 ## Still in development
 
-Only the cow grass-cutter role currently changes in-game behaviour. Other job AI, shop/economy interactions, workplaces, animations and client activity synchronisation remain to be completed. The exact live registry audit and in-game multiplayer test are still pending.
-See `docs/IMPLEMENTATION_STATUS.md` and `docs/CONFIGURATION.md`.
+The cow and pig are the first two jobs with actual gameplay behaviour. The remaining occupations, workplace systems, economy beyond the pig trade, dedicated model animations and client activity synchronisation remain in progress. A live Java 26.2 mob-registry audit and in-game multiplayer tests are still pending.
+
+See `docs/IMPLEMENTATION_STATUS.md`, `docs/CONFIGURATION.md` and `docs/ROLE_CATALOG.md`.

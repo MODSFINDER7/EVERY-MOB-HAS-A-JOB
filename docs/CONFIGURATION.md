@@ -7,7 +7,10 @@ The mod registers a server-side config file named `every_mob_has_a_job-server.to
 | `enableJobAssignments` | true | true/false | Assign jobs to joining mobs |
 | `enableCustomAI` | true | true/false | Enable occupation AI goals |
 | `enableCowGrassCutter` | true | true/false | Enable cow grass cutting |
+| `enablePigButcherShop` | true | true/false | Enable emerald-for-meat pig trades |
+| `pigShopEmeraldPrice` | 1 | 1–64 | Emeralds required for one purchase |
+| `pigShopPorkchopsPerTrade` | 2 | 1–64 | Cooked porkchops given per purchase |
 | `cowGrazeWorkTicks` | 40 | 20–200 | Time spent grazing before the block changes |
 | `cowGrazeCooldownSeconds` | 18 | 1–600 | Delay between successful actions per cow |
 
-The server configuration is authoritative. The cow role also respects the vanilla `mob_griefing` gamerule. These switches do not alter vanilla AI when custom AI is disabled.
+The server configuration is authoritative. The cow role also respects the vanilla `mob_griefing` gamerule. Creative players do not pay emeralds at the pig shop. If the player's inventory is full, purchased meat is dropped nearby.
