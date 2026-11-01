@@ -1,32 +1,18 @@
-# All-mob coverage strategy for Java 26.2
+# All-mob coverage — Java 26.2
 
-The target is every vanilla mob entity type in the Overworld, Nether and End. This does not mean every entity in the entity registry: projectiles, item entities, vehicles, display entities, experience orbs and similar non-mobs are excluded.
+The implementation does not rely on a hand-maintained list for coverage. When an entity enters a level on the logical server, the event handler checks whether it is a Minecraft `Mob`. Its registered entity-type ID is resolved through `MobJobRegistry`.
 
-## Registry-driven discovery
+- Curated mob types receive their named occupation.
+- Every unlisted mob receives a stable occupation generated from its registry path.
+- New mob types from future vanilla updates also receive a generated occupation.
+- Non-mob entities are not assigned jobs.
 
-Enumerate the entity-type registry and classify entries by the mob base class. Resolve each mob through the job registry:
-- Dedicated species assignment when a definition exists.
-- General fallback routine otherwise.
-- Boss-specific category for boss entities, preserving their identity and combat.
+This design covers modded mobs too, unless the server owner disables the feature or adds another definition. It does not claim every mob has a fully implemented custom AI: only the cow grass-cutter behaviour is currently active.
 
-This makes new vanilla mobs discoverable without silently omitting them from a hand-maintained list.
+## Boss handling
 
-## Fixed video assignments
+The Ender Dragon, Wither, Warden and Elder Guardian have special boss/sentinel entries. They keep their existing vanilla encounter logic; the mod does not replace their combat AI with civilian routines.
 
-1. Cow — grass cutter.
-2. Pig — butcher/shopkeeper selling meat.
-3. Iron Golem — police officer.
-4. Enderman — pizza chef and teleporting delivery person.
-5. Camel — firefighter.
-6. Villagers — secret business organisation with restricted offices, guards and hidden facilities.
-7. Pillagers — construction workers.
-8. Creeper — therapy patient.
-9. Horse — paid taxi driver offering selected destinations.
+## Live roster audit
 
-## Boss policy
-
-The Ender Dragon, Wither, Elder Guardian and Warden must not become ordinary civilians. Their job concepts must preserve signature mechanics, arena behaviour and combat identity. Boss roles require separate balance tests.
-
-## Audit output
-
-Generate a sorted CSV with entity ID, category, job ID, dedicated/fallback flag and boss flag. This audit is the source of truth for the exact 26.2 roster; do not rely on an unverified wiki list.
+A final roster export still needs to be generated from the actual 26.2 runtime registry. This avoids publishing an incomplete list copied from an external source.

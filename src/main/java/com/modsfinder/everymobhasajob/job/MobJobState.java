@@ -13,14 +13,11 @@ public final class MobJobState {
             transitionGameTime = gameTime;
         }
     }
-
     public void tick() {
         if (activityTicks < Integer.MAX_VALUE) activityTicks++;
     }
-
     public Snapshot snapshot() {
         return new Snapshot(activity, activityTicks, transitionGameTime);
     }
-
     public record Snapshot(String activity, int activityTicks, long transitionGameTime) {}
 }

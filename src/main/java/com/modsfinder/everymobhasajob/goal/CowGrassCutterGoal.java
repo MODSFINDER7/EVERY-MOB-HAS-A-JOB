@@ -1,0 +1,78 @@
+package com.modsfinder.everymobhasajob.goal;
+
+import java.util.EnumSet;
+import com.modsfinder.everymobhasajob.data.MobJobAttachments;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.animal.cow.Cow;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.block.Blocks;
+
+public final class CowGrassCutterGoal extends Goal {
+    private static final int WORK_TICKS = 40;
+    private static final int COOLDOWN_TICKS = 20 * 18;
+
+    private final Cow cow;
+    private BlockPos grassPosition;
+    private int workTicks;
+    private int cooldownTicks;
+
+    public CowGrassCutterGoal(Cow cow) {
+        this.cow = cow;
+        setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+    }
+
+    @Override
+    public boolean canUse() {
+        if (cooldownTicks > 0) {
+            cooldownTicks--;
+            return false;
+        }
+        if (!cow.isAlive() || cow.isBaby() || cow.isPassenger() || !cow.onGround()) return false;
+        if (!cow.level().getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) return false;
+
+        BlockPos below = cow.blockPosition().below();
+        if (!cow.level().getBlockState(below).is(Blocks.GRASS_BLOCK)) return false;
+        grassPosition = below.immutable();
+        return true;
+    }
+
+    @Override
+    public boolean canContinueToUse() {
+        return grassPosition != null && workTicks < WORK_TICKS
+                && cow.isAlive() && cow.onGround()
+                && cow.blockPosition().below().equals(grassPosition);
+    }
+
+    @Override
+    public void start() {
+        workTicks = 0;
+        cow.getNavigation().stop();
+        cow.setData(MobJobAttachments.ACTIVITY, "grazing");
+    }
+
+    @Override
+    public void tick() {
+        workTicks++;
+        if (workTicks >= WORK_TICKS && grassPosition != null
+                && cow.level().getBlockState(grassPosition).is(Blocks.GRASS_BLOCK)) {
+            cow.level().setBlock(grassPosition, Blocks.DIRT.defaultBlockState(), 3);
+            cooldownTicks = COOLDOWN_TICKS;
+        }
+    }
+
+    @Override
+    public void stop() {
+        if (cow.hasData(MobJobAttachments.ACTIVITY)
+                && "grazing".equals(cow.getData(MobJobAttachments.ACTIVITY))) {
+            cow.setData(MobJobAttachments.ACTIVITY, "idle");
+        }
+        grassPosition = null;
+        workTicks = 0;
+    }
+
+    @Override
+    public boolean requiresUpdateEveryTick() {
+        return true;
+    }
+}

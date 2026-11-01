@@ -8,30 +8,51 @@ plugins {
 version = mod_version
 group = mod_group_id
 
-base {
-    archivesName = mod_id
+base { archivesName = mod_id }
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude("**/*.bbmodel")
+    exclude("src/generated/**/.cache")
 }
+
+repositories {}
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     version = project.neo_version
-
     runs {
         client {
             client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
         server {
             server()
             programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        data {
+            clientData()
+            programArguments.addAll '--mod', project.mod_id, '--all',
+                    '--output', file('src/generated/resources/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath()
         }
     }
-
     mods {
-        "${mod_id}" {
-            sourceSet(sourceSets.main)
-        }
+        "${mod_id}" { sourceSet(sourceSets.main) }
     }
+}
+
+configurations { runtimeClasspath.extendsFrom localRuntime }
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
@@ -49,11 +70,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
     from "src/main/templates"
     into "build/generated/sources/modMetadata"
 }
-
 sourceSets.main.resources.srcDir generateModMetadata
-
 neoForge.ideSyncTask generateModMetadata
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(Test).configureEach { useJUnitPlatform() }

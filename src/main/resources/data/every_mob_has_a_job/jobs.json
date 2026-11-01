@@ -1,11 +1,10 @@
 {
-  "schema_version": 1,
-  "default_job": {
-    "id": "town_resident",
-    "title": "Town Resident",
-    "personality": "Quiet, curious and individual",
-    "activity": "Follows a simple local routine",
-    "animations": ["idle", "look", "walk", "interact"]
+  "schema_version": 2,
+  "coverage": {
+    "scope": "every vanilla entity whose runtime type is a Mob",
+    "resolution": "dedicated occupation when defined; deterministic species-specific fallback otherwise",
+    "unknown_future_types": "automatically receive a generated occupation",
+    "non_mob_entities": "excluded"
   },
   "locked_video_jobs": {
     "minecraft:cow": "grass_cutter",
@@ -18,10 +17,17 @@
     "minecraft:creeper": "therapy_patient",
     "minecraft:horse": "taxi_driver"
   },
-  "coverage_policy": {
-    "all_vanilla_mob_entity_types": true,
-    "unknown_or_future_entity_types": "default_job",
-    "bosses": "preserve_vanilla_identity_and_combat",
-    "variants": "share_species_job_unless_dedicated_entry_exists"
+  "boss_roles": {
+    "minecraft:ender_dragon": "end_realm_custodian",
+    "minecraft:wither": "catastrophe_class_entity",
+    "minecraft:warden": "deep_dark_sentinel",
+    "minecraft:elder_guardian": "monument_commander"
+  },
+  "implementation": {
+    "job_assignment": "implemented",
+    "cow_grass_cutter_goal": "implemented",
+    "other_custom_behaviours": "planned",
+    "custom_model_animations": "planned",
+    "network_activity_sync": "planned"
   }
 }
