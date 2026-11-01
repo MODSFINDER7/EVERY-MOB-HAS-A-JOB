@@ -3,9 +3,9 @@ package com.modsfinder.everymobhasajob.events;
 import com.modsfinder.everymobhasajob.EveryMobHasAJob;
 import com.modsfinder.everymobhasajob.config.MobJobsConfig;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.animal.pig.Pig;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -23,13 +23,12 @@ public final class PigButcherShopEvents {
                 || !MobJobsConfig.ENABLE_PIG_BUTCHER_SHOP.get()) return;
         if (!event.getItemStack().is(Items.EMERALD)) return;
 
-        // Claim this interaction so vanilla pig interactions do not consume the payment.
         event.setCancellationResult(InteractionResult.SUCCESS);
         event.setCanceled(true);
 
         if (event.getLevel().isClientSide()) return;
-
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+
         ItemStack payment = event.getItemStack();
         int price = MobJobsConfig.PIG_SHOP_EMERALD_PRICE.get();
         int amount = MobJobsConfig.PIG_SHOP_PORKCHOPS_PER_TRADE.get();
@@ -37,7 +36,7 @@ public final class PigButcherShopEvents {
         if (!player.getAbilities().instabuild) {
             if (payment.getCount() < price) {
                 player.sendOverlayMessage(
-                        Component.translatable("message.every_mob_has_a_job.pig_shop.not_enough", price), true);
+                        Component.translatable("message.every_mob_has_a_job.pig_shop.not_enough", price));
                 return;
             }
             payment.shrink(price);
@@ -48,7 +47,7 @@ public final class PigButcherShopEvents {
             player.drop(product, false);
         }
 
-        player.displayClientMessage(
-                Component.translatable("message.every_mob_has_a_job.pig_shop.success", amount, price), true);
+        player.sendOverlayMessage(
+                Component.translatable("message.every_mob_has_a_job.pig_shop.success", amount, price));
     }
 }
