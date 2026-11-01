@@ -38,8 +38,11 @@ public final class CamelFirefighterGoal extends Goal {
                 || !serverLevel.getGameRules().get(GameRules.MOB_GRIEFING)) return false;
 
         firePosition = findNearestFire();
-        searchCooldown = SEARCH_INTERVAL_TICKS;
-        return firePosition != null;
+        if (firePosition == null) {
+            searchCooldown = SEARCH_INTERVAL_TICKS;
+            return false;
+        }
+        return true;
     }
 
     private BlockPos findNearestFire() {
@@ -112,6 +115,7 @@ public final class CamelFirefighterGoal extends Goal {
                 && camel.level() instanceof ServerLevel serverLevel
                 && serverLevel.getGameRules().get(GameRules.MOB_GRIEFING)) {
             camel.level().setBlock(firePosition, Blocks.AIR.defaultBlockState(), 3);
+            searchCooldown = MobJobsConfig.CAMEL_FIRE_COOLDOWN_SECONDS.get() * 20;
             firePosition = null;
         } else if (camel.getNavigation().isDone()) {
             camel.getNavigation().moveTo(targetX, firePosition.getY(), targetZ, 1.1D);
