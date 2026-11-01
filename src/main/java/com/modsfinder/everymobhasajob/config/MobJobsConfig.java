@@ -35,6 +35,9 @@ public final class MobJobsConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_PILLAGER_CONSTRUCTION = BUILDER
             .comment("Allow Pillagers to place supplied stone bricks at safe construction spots.")
             .define("enablePillagerConstruction", true);
+    public static final ModConfigSpec.BooleanValue ENABLE_CREEPER_THERAPY = BUILDER
+            .comment("Allow peaceful Creepers to receive a visual therapy-session interaction.")
+            .define("enableCreeperTherapy", true);
 
     public static final ModConfigSpec.IntValue ENDERMAN_PIZZA_EMERALD_PRICE = BUILDER
             .comment("Emeralds charged for one Enderman pizza delivery.")

@@ -14,5 +14,7 @@
   "message.every_mob_has_a_job.construction.busy": "The construction worker is busy dealing with a threat.",
   "message.every_mob_has_a_job.construction.no_space": "The Pillager needs a clear, supported block in front of it.",
   "message.every_mob_has_a_job.construction.failed": "The construction block could not be placed.",
-  "message.every_mob_has_a_job.construction.success": "The Pillager placed one stone-brick construction block."
+  "message.every_mob_has_a_job.construction.success": "The Pillager placed one stone-brick construction block.",
+  "message.every_mob_has_a_job.therapy.too_busy": "This Creeper is not ready for a therapy session.",
+  "message.every_mob_has_a_job.therapy.session_started": "The Creeper is having a calm therapy moment."
 }

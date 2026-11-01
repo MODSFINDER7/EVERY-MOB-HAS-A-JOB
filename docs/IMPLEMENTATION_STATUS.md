@@ -3,7 +3,7 @@
 ## Implemented
 
 - NeoForge 26.2 / Java 25 Gradle wrapper and GitHub Actions build/test workflow.
-- Server-side config for job assignment, job inspection, custom AI, cow grazing, pig shop, camel firefighting, horse taxi, iron-golem police response, Enderman pizza and Pillager construction.
+- Server-side config for job assignment, job inspection, custom AI, cow grazing, pig shop, camel firefighting, horse taxi, iron-golem police response, Enderman pizza, Pillager construction and Creeper therapy.
 - Persistent job ID and activity entity attachments; both sync to tracking clients.
 - Server-side occupation assignment for every joining entity that is a Minecraft Mob.
 - Curated jobs for the nine locked video roles and many other vanilla species.
@@ -16,10 +16,11 @@
 - Iron-golem police response: vanilla target changes update the synced job activity and show an alert cue without replacing vanilla combat.
 - Enderman pizza courier: right-click an Enderman while holding emeralds. The server checks for a safe nearby delivery spot, teleports the Enderman beside the player and drops a pumpkin pie named Nether Pizza. The fare is configurable.
 - Pillager construction worker: right-click a non-aggressive Pillager with stone bricks. It places one stone-brick block in a clear, supported space directly ahead, subject to the server's interaction permission check. Payment is consumed only after placement succeeds.
+- Creeper therapy interaction: use a poppy on an unignited Creeper that is not swelling and has no target. It consumes the poppy, sets the synced activity to therapy_session and shows heart particles. The vanilla fuse/explosion logic is unchanged.
 
 ## Still in development
 
-Cow, pig, camel, horse, Enderman and Pillager have direct gameplay interactions/AI. The iron golem has a synced police-response state and visual cue. The Enderman's restaurant, custom pizza item and long courier routes remain unfinished; the horse's named destination selection and autonomous route navigation remain unfinished. Pillagers currently place one supplied block per interaction; construction-site routines and multi-block building are not implemented yet. Other assigned occupations still need their AI goals, workplaces, custom interactions and role-specific animations.
+Cow, pig, camel, horse, Enderman and Pillager have direct gameplay interactions/AI. Creeper has a visual therapy interaction and the Iron Golem has synced police-response state. The Enderman restaurant, custom pizza item and long courier routes remain unfinished; the horse's named destination selection and autonomous route navigation remain unfinished. Pillagers currently place one supplied block per interaction; construction-site routines and multi-block building are not implemented yet. Other assigned occupations still need their AI goals, workplaces, custom interactions and role-specific animations.
 
 Custom animated model layers are not implemented yet. The exact Java 26.2 live entity-registry audit, dedicated-server test and two-client multiplayer play test also remain pending.
 
